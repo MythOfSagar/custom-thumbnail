@@ -1,19 +1,22 @@
 <div style="width: 100%;height: 246px;background-color: red;">
-<div style="width: 439px;height: 86px;background-color: blue;">
+<div  (dblclick)="topImage.click()" style="width: 439px;height: 86px;background-color: blue;">
   <div *ngIf="selectedTopImage">
     <img style="width: 439px;height: 86px;" [src]="selectedTopImage" alt="top image">
   </div>
 </div>
 <div class="youtube-thumbnail">
-  <div class="channel-logo">
-    <img [src]="channelLogoUrl" alt="Channel Logo">
+  <div (dblclick)="channelLogo.click()" class="channel-logo">
+    <img [src]="selectedChannelLogo || channelLogoUrl" alt="Channel Logo">
   </div>
   <div class="video-details">
-    <div class="video-title">{{ videoTitle }}</div>
+    <div class="video-title">{{ videoTitle.trim() }}</div>
     <div class="channel-info">
-      <div class="channel-name">{{ channelName }}
-        <span class="views">{{ views }} views</span> 
-        <span class="published-date">{{ publishedDate }}</span>
+      <div class="channel-name">
+        <span title="A" >{{ channelName.trim() }}</span>
+        <span title="AB" class="views">{{ readableViews(views) }}</span> 
+        <span title="ABC" class="time-since">
+          {{ time.toString() + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
+        </span>
       </div>
     </div>
   </div>
@@ -21,15 +24,31 @@
     <span class="menu-icon">&#8942;</span>
   </div>
 </div>
-<div style="width: 439px;height: 86px;background-color: blue;">
+<div (dblclick)="bottomtopImage.click()" style="width: 439px;height: 86px;background-color: blue;">
   <div *ngIf="selectedBottomImage">
     <img style="width: 439px;height: 86px;" [src]="selectedBottomImage" alt="top image">
   </div>
 </div>
 </div>
 
-<input type="file" (change)="onFileSelected($event,'top')" accept="image/*">
-<input type="file" (change)="onFileSelected($event,'bottom')" accept="image/*">
+
+<input type="text" [(ngModel)]="videoTitle"><br>
+<input type="text" [(ngModel)]="channelName">
+
+<div> 
+  <input type="number" name="" id="" [(ngModel)]="time">
+    <select [(ngModel)]="period">
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+      <option value="years">Years</option>
+  </select>
+</div>
+
+<input type="number" [(ngModel)]="views">
 
 
-
+<input style="display: none;" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">
+<input style="display: none;" type="file" #topImage (change)="onFileSelected($event,'top')" accept="image/*">
+<input style="display: none;" type="file" #bottomtopImage  (change)="onFileSelected($event,'bottom')" accept="image/*">
