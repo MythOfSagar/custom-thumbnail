@@ -1,6 +1,4 @@
-import { Component,Input } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component,ElementRef,Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'custom-thumbnail-youtube-thumbnail',
@@ -9,20 +7,29 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class YoutubeThumbnailComponent {
-  channelName: string='The Military Show';
-  @Input() channelLogoUrl: string='';
-  videoTitle: string='Why Russia is Running out of Tanks';
+  channelName: string=`${window.innerWidth}`;
+  videoTitle: string='Shah Rukh Khan, the King of Bollywood';
   views: number=1;
-  @Input() thumbnailUrl: string='';
-  @Input() videoLength: string='';
   time:number=10
+  videoDetailsDiv:any
+  initialDetailsHeight:number=0
+  initialImageHeight:number=0
+  isDarkTheme:boolean=true
   period:String='days'
-  constructor(){
-  }
+  selectedTopImage: string='https://mcdn.wallpapersafari.com/medium/80/68/YravwC.jpg';
+  selectedBottomImage: string ='https://www.dontwasteyourmoney.com/wp-content/uploads/2020/07/best-extra-wide-pet-gate-900x400.jpeg';
+  selectedChannelLogo: string ='https://yt3.googleusercontent.com/FU332R7JMjZaRm1YGvk8NnHJ1C9zW_yLpXz0GkHqGXV0bDRaAuulxt7s2TEJkN05FojDn2I5JuU=s176-c-k-c0x00ffffff-no-rj';
+  hours:number=0
+  minutes:number=22
+  seconds:number=6
+  
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
-  selectedTopImage: string | undefined;
-  selectedBottomImage: string | undefined;
-  selectedChannelLogo: string | undefined;
+  ngAfterViewInit() {
+    this.videoDetailsDiv=this.elementRef.nativeElement.querySelector('.youtube-thumbnail-details');
+    this.initialDetailsHeight=this.videoDetailsDiv.offsetHeight
+    this.initialImageHeight=this.elementRef.nativeElement.querySelector('.thumbnail-images').offsetHeight
+  }
 
 
   onFileSelected(event: any,type:string) {
@@ -30,6 +37,20 @@ export class YoutubeThumbnailComponent {
     this.readImage(file,type);
   }
 
+  duration(){
+    if(this.hours){
+      if(this.minutes<10){
+        return `${this.hours}:0${this.minutes}:${this.seconds}`
+      }
+      return `${this.hours}:${this.minutes}:${this.seconds}`
+    }
+    if(this.seconds<10){
+      return `${this.minutes}:0${this.seconds}`
+    }
+    return `${this.minutes}:${this.seconds}`
+  }
+
+  
   readImage(file: File,type:string) {
     const reader = new FileReader();
     reader.onload = (event: any) => {
@@ -44,11 +65,38 @@ export class YoutubeThumbnailComponent {
     reader.readAsDataURL(file);
   }
 
+  shortenChannelName(channelName: string):string{
+    if(channelName.length>70){
+      return channelName.trim().substring(0,65)+'...'
+    }
+    return channelName
+  }
+
+
+
+  adjustHeight(){
+    const divElements = this.elementRef.nativeElement.querySelectorAll('.thumbnail-images');
+
+    if (this.videoDetailsDiv?.offsetHeight !== this.initialDetailsHeight) {
+      divElements.forEach((divElement: HTMLElement) => {
+        this.renderer.setStyle(
+          divElement,
+          'height',
+          `${
+            this.initialImageHeight -
+            (this.videoDetailsDiv?.offsetHeight - this.initialDetailsHeight) / 2
+          }px`
+        );
+      });
+    }
+  }
+
   readableViews(number: number): string {
     const billion = 1000000000;
     const million = 1000000;
     const thousand = 1000;
-  
+
+
     if (number >= billion) {
       const views = (number / billion).toFixed(1);
       if(views.split('.')[1]=='0')
@@ -74,6 +122,7 @@ export class YoutubeThumbnailComponent {
       return number+' '+'view';
     }
     else {
+      if(!number) number =1
       return number.toString()+' '+'views';
     }
   }

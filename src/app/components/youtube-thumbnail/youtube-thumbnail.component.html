@@ -1,54 +1,63 @@
-<div style="width: 100%;height: 246px;background-color: red;">
-<div  (dblclick)="topImage.click()" style="width: 439px;height: 86px;background-color: blue;">
-  <div *ngIf="selectedTopImage">
-    <img style="width: 439px;height: 86px;" [src]="selectedTopImage" alt="top image">
+<div class="youtube-thumbnail-container"
+[ngClass]="{
+  'youtube-thumbnail-container-dark-theme':isDarkTheme,
+  'youtube-thumbnail-container-light-theme':!isDarkTheme
+}">
+  <div class="top-image thumbnail-images top-img-div"
+  (dblclick)="topImage.click()">
+    <img  class="top-image thumbnail-images" [src]="selectedTopImage" alt="top image">
+    <div class="duration">{{duration()}}</div>
   </div>
-</div>
-<div class="youtube-thumbnail">
-  <div (dblclick)="channelLogo.click()" class="channel-logo">
-    <img [src]="selectedChannelLogo || channelLogoUrl" alt="Channel Logo">
-  </div>
-  <div class="video-details">
-    <div class="video-title">{{ videoTitle.trim() }}</div>
-    <div class="channel-info">
-      <div class="channel-name">
-        <span title="A" >{{ channelName.trim() }}</span>
-        <span title="AB" class="views">{{ readableViews(views) }}</span> 
-        <span title="ABC" class="time-since">
-          {{ time.toString() + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
-        </span>
+  <div class="youtube-thumbnail-details">
+    <div (dblclick)="channelLogo.click()" class="channel-logo">
+      <img [src]="selectedChannelLogo" alt="ChannelLogo">
+    </div>
+    <div class="video-details">
+      <div class="video-title">{{ videoTitle.trim() }}</div>
+      <div class="video-info">
+        <div class="channel-name">
+          <span>{{ shortenChannelName(channelName) }}</span>
+          <span class="views">{{ readableViews(views) }}</span>
+          <span class="time-since">
+            {{ time && time.toString() + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
+          </span>
+        </div>
       </div>
     </div>
+    <div>
+      <span class="menu-icon">&#8942;</span>
+    </div>
   </div>
-  <div>
-    <span class="menu-icon">&#8942;</span>
+  <div class="bottom-image thumbnail-images" (dblclick)="bottomtopImage.click()">
+    <img  class="bottom-image thumbnail-images" [src]="selectedBottomImage" alt="top image">
   </div>
-</div>
-<div (dblclick)="bottomtopImage.click()" style="width: 439px;height: 86px;background-color: blue;">
-  <div *ngIf="selectedBottomImage">
-    <img style="width: 439px;height: 86px;" [src]="selectedBottomImage" alt="top image">
-  </div>
-</div>
 </div>
 
 
-<input type="text" [(ngModel)]="videoTitle"><br>
-<input type="text" [(ngModel)]="channelName">
 
-<div> 
-  <input type="number" name="" id="" [(ngModel)]="time">
-    <select [(ngModel)]="period">
-      <option value="seconds">Seconds</option>
-      <option value="minutes">Minutes</option>
-      <option value="hours">Hours</option>
-      <option value="days">Days</option>
-      <option value="years">Years</option>
+
+<input type="number" [(ngModel)]="hours">
+<input type="number" max="60" min="0" [(ngModel)]="minutes">
+<input type="number" max="60" min="0" [(ngModel)]="seconds">
+
+
+
+<input (ngModelChange)="adjustHeight()" type="text" [(ngModel)]="videoTitle"><br>
+<input (ngModelChange)="adjustHeight()" type="text" [(ngModel)]="channelName">
+<div>
+  <input (ngModelChange)="adjustHeight()" type="number"  [(ngModel)]="time">
+  <select (ngModelChange)="adjustHeight()" [(ngModel)]="period">
+    <option value="seconds">Seconds</option>
+    <option value="minutes">Minutes</option>
+    <option value="hours">Hours</option>
+    <option value="days">Days</option>
+    <option value="years">Years</option>
   </select>
 </div>
 
-<input type="number" [(ngModel)]="views">
+<input (ngModelChange)="adjustHeight()" type="number" [(ngModel)]="views">
 
 
-<input style="display: none;" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">
-<input style="display: none;" type="file" #topImage (change)="onFileSelected($event,'top')" accept="image/*">
-<input style="display: none;" type="file" #bottomtopImage  (change)="onFileSelected($event,'bottom')" accept="image/*">
+<input class="image-input" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">
+<input class="image-input" type="file" #topImage (change)="onFileSelected($event,'top')" accept="image/*">
+<input class="image-input" type="file" #bottomtopImage (change)="onFileSelected($event,'bottom')" accept="image/*">
