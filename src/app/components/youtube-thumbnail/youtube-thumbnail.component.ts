@@ -61,16 +61,18 @@ export class YoutubeThumbnailComponent implements OnInit {
   
 
   duration(){
-    if(this.hours){
-      if(this.minutes<10){
-        return `${this.hours.toFixed(0)}:0${this.minutes}:${this.seconds}`
+    const seconds=this.seconds || 0
+    const minutes=this.minutes || 0
+       if(this.hours){
+      if(minutes<10){
+        return `${this.hours.toFixed(0)}:0${minutes}:${seconds}`
       }
-      return `${this.hours.toFixed(0)}:${this.minutes}:${this.seconds}`
+      return `${this.hours.toFixed(0)}:${minutes}:${seconds}`
     }
-    if(this.seconds<10){
-      return `${this.minutes}:0${this.seconds}`
+    if(seconds<10){
+      return `${minutes}:0${seconds}`
     }
-    return `${this.minutes}:${this.seconds}`
+    return `${minutes}:${seconds}`
   }
 
   
