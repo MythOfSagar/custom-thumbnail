@@ -19,7 +19,7 @@
           <span>{{ shortenChannelName(channelName) }}</span>
           <span class="views">{{ readableViews(views) }}</span>
           <span class="time-since">
-            {{ time && time.toString() + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
+            {{ (time && time.toString() || 1) + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
           </span>
         </div>
       </div>
@@ -63,3 +63,6 @@
 <input class="image-input" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">
 <input class="image-input" type="file" #topImage (change)="onFileSelected($event,'top')" accept="image/*">
 <input class="image-input" type="file" #bottomtopImage (change)="onFileSelected($event,'bottom')" accept="image/*">
+
+
+<button (click)="downloadAsImage()">Download</button>

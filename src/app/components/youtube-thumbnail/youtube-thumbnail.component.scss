@@ -24,7 +24,7 @@ $thumbnail-width: var(--thumbnail-width);
   .top-image,
   .bottom-image {
     width: calc($thumbnail-width);
-    height: calc($thumbnail-width/5.10465);
+    height: calc($thumbnail-width/5.1);
   }
 
   .youtube-thumbnail-details {
@@ -91,6 +91,7 @@ $thumbnail-width: var(--thumbnail-width);
 
 
 .youtube-thumbnail-container-dark-theme{
+  background-color: #0f0f0f;
   .youtube-thumbnail-details {
       background-color: #0f0f0f;
       .video-info {
@@ -103,6 +104,7 @@ $thumbnail-width: var(--thumbnail-width);
     }
 }
 .youtube-thumbnail-container-light-theme{
+  background-color: #fff;
   .youtube-thumbnail-details {
       background-color: #fff;
       .video-info {

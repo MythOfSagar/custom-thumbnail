@@ -1,4 +1,7 @@
 import { Component,ElementRef, OnInit, Renderer2} from '@angular/core';
+import * as html2canvas from 'html2canvas';
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'custom-thumbnail-youtube-thumbnail',
@@ -52,13 +55,14 @@ export class YoutubeThumbnailComponent implements OnInit {
     this.renderer.appendChild(document.head, styleEl);
   }
 
-  setBackgroundUsingVariable(color: string) {
-    const css = `:root { --background-color: ${color}; }`;
-    this.renderer.setStyle(document.documentElement, 'background-color', `var(--background-color)`);
-    this.renderer.appendChild(document.head, this.renderer.createText(css));
+  downloadAsImage() {
+    const div:any= document.querySelector('.youtube-thumbnail-container');
+    html2canvas.default(div).then((canvas) => {
+      canvas.toBlob((blob:any) => {
+        saveAs(blob, 'div_image.png');
+      });
+    });
   }
-  
-  
 
   duration(){
     const seconds=this.seconds || 0
@@ -121,6 +125,7 @@ export class YoutubeThumbnailComponent implements OnInit {
     const million = 1000000;
     const thousand = 1000;
 
+    if(!number) number =1
 
     if (number >= billion) {
       const views = (number / billion).toFixed(1);
@@ -147,7 +152,7 @@ export class YoutubeThumbnailComponent implements OnInit {
       return number+' '+'view';
     }
     else {
-      if(!number) number =1
+  
       return number.toString()+' '+'views';
     }
   }
