@@ -37,8 +37,8 @@
 
 
 <input type="number" [(ngModel)]="hours">
-<input type="number" max="60" min="0" [(ngModel)]="minutes">
-<input type="number" max="60" min="0" [(ngModel)]="seconds">
+<input type="number" max="59" min="0" [(ngModel)]="minutes">
+<input type="number" max="59" min="0" [(ngModel)]="seconds">
 
 
 
@@ -56,6 +56,8 @@
 </div>
 
 <input (ngModelChange)="adjustHeight()" type="number" [(ngModel)]="views">
+
+<button (click)="isDarkTheme=!isDarkTheme">{{isDarkTheme ? 'Light Theme' : 'Dark Theme'}}</button>
 
 
 <input class="image-input" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">

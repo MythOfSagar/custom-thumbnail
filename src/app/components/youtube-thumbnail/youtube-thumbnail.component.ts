@@ -1,4 +1,4 @@
-import { Component,ElementRef,Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import { Component,ElementRef, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'custom-thumbnail-youtube-thumbnail',
@@ -6,8 +6,8 @@ import { Component,ElementRef,Input, OnChanges, Renderer2, SimpleChanges } from 
   styleUrls: ['./youtube-thumbnail.component.scss']
 })
 
-export class YoutubeThumbnailComponent {
-  channelName: string=`${window.innerWidth}`;
+export class YoutubeThumbnailComponent implements OnInit {
+  channelName: string=`SRK`;
   videoTitle: string='Shah Rukh Khan, the King of Bollywood';
   views: number=1;
   time:number=10
@@ -25,6 +25,14 @@ export class YoutubeThumbnailComponent {
   
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
+  ngOnInit() {
+    if(window.innerWidth<window.innerHeight){
+      this.setThumbnailWidth(`${window.innerWidth}px`,'thumbnail-width');
+     }else{
+      this.setThumbnailWidth(`${window.innerHeight}px`,'thumbnail-width');
+     }
+  }
+
   ngAfterViewInit() {
     this.videoDetailsDiv=this.elementRef.nativeElement.querySelector('.youtube-thumbnail-details');
     this.initialDetailsHeight=this.videoDetailsDiv.offsetHeight
@@ -37,12 +45,27 @@ export class YoutubeThumbnailComponent {
     this.readImage(file,type);
   }
 
+  setThumbnailWidth(value:string,variable:string) {
+    const styleEl = this.renderer.createElement('style');
+    const css = `:root { --${variable}: ${value}; }`;
+    this.renderer.appendChild(styleEl, this.renderer.createText(css));
+    this.renderer.appendChild(document.head, styleEl);
+  }
+
+  setBackgroundUsingVariable(color: string) {
+    const css = `:root { --background-color: ${color}; }`;
+    this.renderer.setStyle(document.documentElement, 'background-color', `var(--background-color)`);
+    this.renderer.appendChild(document.head, this.renderer.createText(css));
+  }
+  
+  
+
   duration(){
     if(this.hours){
       if(this.minutes<10){
-        return `${this.hours}:0${this.minutes}:${this.seconds}`
+        return `${this.hours.toFixed(0)}:0${this.minutes}:${this.seconds}`
       }
-      return `${this.hours}:${this.minutes}:${this.seconds}`
+      return `${this.hours.toFixed(0)}:${this.minutes}:${this.seconds}`
     }
     if(this.seconds<10){
       return `${this.minutes}:0${this.seconds}`

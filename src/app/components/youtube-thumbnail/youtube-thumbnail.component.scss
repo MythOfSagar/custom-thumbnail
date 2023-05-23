@@ -1,54 +1,54 @@
 /* youtube-thumbnail.component.css */
 
-$thumbnail-width: 11290px;
+$thumbnail-width: var(--thumbnail-width);
 
 
 .youtube-thumbnail-container {
   width: fit-content;
   margin: auto;
-  height: $thumbnail-width/1.78455;
+  height: calc($thumbnail-width/1.78455);
   .top-img-div{
     position: relative;
     .duration {
       position: absolute;
       font-family: "Roboto", "Arial", sans-serif;
-      bottom: $thumbnail-width/40;
-      right: $thumbnail-width/40;
+      bottom: calc($thumbnail-width/40);
+      right: calc($thumbnail-width/40);
       background-color: rgba(0, 0, 0, 0.5);
       color: #ffffff;
-      padding: $thumbnail-width/220 $thumbnail-width/110;
-      font-size: $thumbnail-width/36.66666;
+      padding: calc($thumbnail-width/220) calc($thumbnail-width/110);
+      font-size: calc($thumbnail-width/36.66666);
       border-radius: 4px;
     }
   }
   .top-image,
   .bottom-image {
-    width: $thumbnail-width;
-    height: $thumbnail-width/5.10465;
+    width: calc($thumbnail-width);
+    height: calc($thumbnail-width/5.10465);
   }
 
   .youtube-thumbnail-details {
     display: flex;
-    padding: $thumbnail-width/33.76923 $thumbnail-width/39.90909 $thumbnail-width/36.58333 $thumbnail-width/24.38888;
-    width: $thumbnail-width/1.07073;
+    padding: calc($thumbnail-width/33.76923) calc($thumbnail-width/39.90909) calc($thumbnail-width/36.58333) calc($thumbnail-width/24.38888);
+    width: calc($thumbnail-width/1.07073);
     height: fit-content;
     .channel-logo img {
-      width: $thumbnail-width/9.75555;
-      height: $thumbnail-width/9.75555;
+      width: calc($thumbnail-width/9.75555);
+      height: calc($thumbnail-width/9.75555);
       border-radius: 50%;
     }
 
     .video-details {
       flex: 1;
-      margin-left: $thumbnail-width/29.26666;
+      margin-left: calc($thumbnail-width/29.26666);
 
       .video-title {
         font-family: "Roboto", "Arial", sans-serif;
-        font-size: $thumbnail-width/25.82352;
+        font-size: calc($thumbnail-width/25.82352);
         font-weight: 500;
         overflow: hidden;
-        margin-bottom: $thumbnail-width/87.8;
-        max-height: $thumbnail-width/6.23579;
+        margin-bottom: calc($thumbnail-width/87.8);
+        max-height: calc($thumbnail-width/6.23579);
         -webkit-line-clamp: 2;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -58,29 +58,29 @@ $thumbnail-width: 11290px;
 
       .video-info {
         font-family: "Roboto", "Arial", sans-serif;
-        font-size: $thumbnail-width/31.35714;
-        line-height: $thumbnail-width/24.38888;
+        font-size: calc($thumbnail-width/31.35714);
+        line-height: calc($thumbnail-width/24.38888);
         font-weight: 400;
-        max-height: $thumbnail-width/6.85937;
+        max-height: calc($thumbnail-width/6.85937);
         white-space: normal;
 
         .channel-name {
           overflow: hidden;
-          max-height: $thumbnail-width/6.23579;
+          max-height: calc($thumbnail-width/6.23579);
           text-overflow: ellipsis;
           white-space: normal;
 
           .views:before,
           .time-since:before {
             content: "\00B7";
-            margin: 0 $thumbnail-width/73.16666;
+            margin: 0 calc($thumbnail-width/73.16666);
           }
         }
       }
     }
     .menu-icon {
       margin-left: auto;
-      font-size: $thumbnail-width/27.4375;
+      font-size: calc($thumbnail-width/27.4375);
     }
   }
 }
