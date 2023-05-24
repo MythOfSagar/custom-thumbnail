@@ -34,30 +34,34 @@
 </div>
 
 
+<div class="input-fields-container"
+[ngClass]="{
+  'input-fields-dark-theme':isDarkTheme,
+  'input-fields-light-theme':!isDarkTheme
+}"
+>
 
+<input (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle"><br>
+<div style="display: flex;">
+<input (ngModelChange)="adjustHeight()" type="text" class="channelName" [(ngModel)]="channelName">
+<input (ngModelChange)="adjustHeight()" type="number" class="views" [(ngModel)]="views">
 
-<input type="number" [(ngModel)]="hours">
-<input type="number" max="59" min="0" [(ngModel)]="minutes">
-<input type="number" max="59" min="0" [(ngModel)]="seconds">
-
-
-
-<input (ngModelChange)="adjustHeight()" type="text" [(ngModel)]="videoTitle"><br>
-<input (ngModelChange)="adjustHeight()" type="text" [(ngModel)]="channelName">
-<div>
-  <input (ngModelChange)="adjustHeight()" type="number"  [(ngModel)]="time">
-  <select (ngModelChange)="adjustHeight()" [(ngModel)]="period">
-    <option value="seconds">Seconds</option>
-    <option value="minutes">Minutes</option>
-    <option value="hours">Hours</option>
-    <option value="days">Days</option>
-    <option value="years">Years</option>
+  <input (ngModelChange)="adjustHeight()" type="number" class="time" [(ngModel)]="time">
+  <select (ngModelChange)="adjustHeight()" class="period" [(ngModel)]="period">
+    <option value="seconds">seconds ago</option>
+    <option value="minutes">minutes ago</option>
+    <option value="hours">hours ago</option>
+    <option value="days">days ago</option>
+    <option value="years">years ago</option>
   </select>
 </div>
+<br>
+<input type="number" class="hours" [(ngModel)]="hours">
+<input type="number" max="59" min="0" class="minutes" [(ngModel)]="minutes">
+<input type="number" max="59" min="0" class="seconds" [(ngModel)]="seconds">
+</div>
 
-<input (ngModelChange)="adjustHeight()" type="number" [(ngModel)]="views">
-
-<button (click)="isDarkTheme=!isDarkTheme">{{isDarkTheme ? 'Light Theme' : 'Dark Theme'}}</button>
+<button (click)="toggleTheme()">{{isDarkTheme ? 'Light Theme' : 'Dark Theme'}} Thumbnail</button>
 
 
 <input class="image-input" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">

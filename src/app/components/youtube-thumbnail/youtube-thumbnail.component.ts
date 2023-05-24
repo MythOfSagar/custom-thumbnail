@@ -12,7 +12,7 @@ import { saveAs } from 'file-saver';
 export class YoutubeThumbnailComponent implements OnInit {
   channelName: string=`SRK`;
   videoTitle: string='Shah Rukh Khan, the King of Bollywood';
-  views: number=1;
+  views: number=77700000;
   time:number=10
   videoDetailsDiv:any
   initialDetailsHeight:number=0
@@ -34,6 +34,7 @@ export class YoutubeThumbnailComponent implements OnInit {
      }else{
       this.setThumbnailWidth(`${window.innerHeight}px`,'thumbnail-width');
      }
+     this.renderer.setStyle(document.body, 'background-color', '#0f0f0f');
   }
 
   ngAfterViewInit() {
@@ -62,6 +63,12 @@ export class YoutubeThumbnailComponent implements OnInit {
         saveAs(blob, 'div_image.png');
       });
     });
+  }
+
+  toggleTheme(){
+    this.isDarkTheme=!this.isDarkTheme
+    this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#0f0f0f');
+    !this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#fff');
   }
 
   duration(){
@@ -114,6 +121,16 @@ export class YoutubeThumbnailComponent implements OnInit {
           `${
             this.initialImageHeight -
             (this.videoDetailsDiv?.offsetHeight - this.initialDetailsHeight) / 2
+          }px`
+        );
+      });
+    }else{
+      divElements.forEach((divElement: HTMLElement) => {
+        this.renderer.setStyle(
+          divElement,
+          'height',
+          `${
+            this.initialImageHeight
           }px`
         );
       });
