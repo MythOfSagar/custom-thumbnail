@@ -125,7 +125,7 @@ export class YoutubeThumbnailComponent implements OnInit {
     const million = 1000000;
     const thousand = 1000;
 
-    if(!number) number =1
+    if(!number) number =0
 
     if (number >= billion) {
       const views = (number / billion).toFixed(1);

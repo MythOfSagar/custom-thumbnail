@@ -19,7 +19,7 @@
           <span>{{ shortenChannelName(channelName) }}</span>
           <span class="views">{{ readableViews(views) }}</span>
           <span class="time-since">
-            {{ (time && time.toString() || 1) + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
+            {{ (time && time.toString() || 0) + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
           </span>
         </div>
       </div>
