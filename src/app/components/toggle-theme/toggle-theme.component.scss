@@ -1,7 +1,7 @@
 $thumbnail-width: var(--thumbnail-width);
 .theme-container {
-    width: calc($thumbnail-width/12);
-    height: calc($thumbnail-width/12);
+    width: calc($thumbnail-width/9.75555);
+    height: calc($thumbnail-width/9.75555);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -10,8 +10,8 @@ $thumbnail-width: var(--thumbnail-width);
     cursor: pointer;
 }
 .theme-container img{
-    width: calc($thumbnail-width/21);
-    height: calc($thumbnail-width/21);
+    width: calc($thumbnail-width/20);
+    height: calc($thumbnail-width/20);
     border-radius: 50%;
 }
 
