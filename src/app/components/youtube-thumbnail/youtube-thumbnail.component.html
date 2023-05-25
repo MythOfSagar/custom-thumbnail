@@ -34,6 +34,8 @@
 </div>
 
 
+
+
 <div class="input-fields-container"
 [ngClass]="{
   'input-fields-dark-theme':isDarkTheme,
@@ -61,12 +63,18 @@
 <input type="number" max="59" min="0" class="seconds" [(ngModel)]="seconds">
 </div>
 
-<button (click)="toggleTheme()">{{isDarkTheme ? 'Light Theme' : 'Dark Theme'}} Thumbnail</button>
+<div class="buttonsDiv">
+<custom-thumbnail-toggle-theme (emittTheme)="recieveTheme($event)"></custom-thumbnail-toggle-theme>
 
+<img title="Download thumbnail" class="download-icon" [ngClass]="{
+  'download-icon-dark-theme':isDarkTheme,
+  'download-icon-light-theme':!isDarkTheme
+}" (click)="downloadAsImage()" 
+src="https://i.ibb.co/fHdZzcL/Screenshot-from-2023-05-25-22-37-21.png" alt="download">
+
+</div>
 
 <input class="image-input" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">
 <input class="image-input" type="file" #topImage (change)="onFileSelected($event,'top')" accept="image/*">
 <input class="image-input" type="file" #bottomtopImage (change)="onFileSelected($event,'bottom')" accept="image/*">
 
-
-<button (click)="downloadAsImage()">Download</button>

@@ -174,11 +174,34 @@ $thumbnail-width: var(--thumbnail-width);
 
 .input-fields-container{
   width: fit-content;
-  margin: 100px auto;
+  margin: 100px auto 50px auto;
 }
 
 .period,
 input{
   border: 0;
  border-left: 2px solid red;
+}
+
+.buttonsDiv{
+ margin: auto;
+ width: fit-content;
+ display: flex;
+ justify-content: space-between;
+ width: calc($thumbnail-width/1.7);
+}
+
+.download-icon{
+  width: calc($thumbnail-width/12);
+  height: calc($thumbnail-width/12);
+  border-radius: 50%;
+  
+  cursor: pointer;
+}
+.download-icon-light-theme{
+  filter: invert(1);
+  box-shadow: 7px 7px 15px -10px #bbcfda, -4px -4px 13px #ffffff, inset 7px 7px 3px rgba(209, 217, 230, 0.35), inset -11px -11px 3px rgba(255, 255, 255, 0.3);
+}
+.download-icon-dark-theme{
+  box-shadow: 17px 17px 23px #1a1d20, -17px -17px 23px #282d32, inset 5px 5px 4px #1e2226, inset -5px -5px 4px #24282c;
 }

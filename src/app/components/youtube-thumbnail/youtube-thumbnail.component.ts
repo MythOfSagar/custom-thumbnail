@@ -43,6 +43,12 @@ export class YoutubeThumbnailComponent implements OnInit {
     this.initialImageHeight=this.elementRef.nativeElement.querySelector('.thumbnail-images').offsetHeight
   }
 
+  recieveTheme(theme:boolean){
+    this.isDarkTheme=theme
+    this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#0f0f0f');
+    !this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#fff');
+  }
+
 
   onFileSelected(event: any,type:string) {
     const file: File = event.target.files[0] as File;
@@ -60,16 +66,11 @@ export class YoutubeThumbnailComponent implements OnInit {
     const div:any= document.querySelector('.youtube-thumbnail-container');
     html2canvas.default(div).then((canvas) => {
       canvas.toBlob((blob:any) => {
-        saveAs(blob, 'div_image.png');
+        saveAs(blob, 'MythOfSagar.png');
       });
     });
   }
 
-  toggleTheme(){
-    this.isDarkTheme=!this.isDarkTheme
-    this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#0f0f0f');
-    !this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#fff');
-  }
 
   duration(){
     const seconds=this.seconds || 0
