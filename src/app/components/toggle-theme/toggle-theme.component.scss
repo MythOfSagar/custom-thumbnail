@@ -9,6 +9,11 @@ $thumbnail-width: var(--thumbnail-width);
     transition: 0.5s;
     cursor: pointer;
 }
+.theme-container img{
+    width: calc($thumbnail-width/21);
+    height: calc($thumbnail-width/21);
+    border-radius: 50%;
+}
 
 .theme-container:hover {
     opacity: 0.8;
