@@ -188,7 +188,7 @@ input{
  width: fit-content;
  display: flex;
  justify-content: space-between;
- width: calc($thumbnail-width/1.7);
+ width: $thumbnail-width
 }
 
 .download-icon{
