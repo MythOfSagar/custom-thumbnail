@@ -13,12 +13,12 @@ export class YoutubeThumbnailComponent implements OnInit {
   channelName: string=`yFX Studios`;
   videoTitle: string='WAR Vfx breakdown by yFX';
   views: number=362000;
-  time:number=1
+  time:number=7
   videoDetailsDiv:any
   initialDetailsHeight:number=0
   initialImageHeight:number=0
   isDarkTheme:boolean=true
-  period:String='months'
+  period:string='days'
   selectedTopImage: string='https://mcdn.wallpapersafari.com/medium/80/68/YravwC.jpg';
   selectedBottomImage: string ='https://www.dontwasteyourmoney.com/wp-content/uploads/2020/07/best-extra-wide-pet-gate-900x400.jpeg';
   selectedChannelLogo: string ='https://yt3.googleusercontent.com/BygFhJOv7N5bikizmourxBK9KatTTEDmmtCAg-DmnikXB0fv77J_hxyPCgiRGAiTprjNKIBwNw=s176-c-k-c0x00ffffff-no-rj';
