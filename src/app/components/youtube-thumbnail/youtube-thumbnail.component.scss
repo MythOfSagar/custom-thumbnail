@@ -17,19 +17,25 @@ $thumbnail-width: var(--thumbnail-width);
       background-color: rgba(0, 0, 0, 0.5);
       color: #ffffff;
       padding: calc($thumbnail-width/220) calc($thumbnail-width/110);
-      font-size: calc($thumbnail-width/36.66666);
-      border-radius: calc($thumbnail-width/140);
+      border-radius: calc($thumbnail-width/100);
     }
   }
   .top-image,
   .bottom-image {
     width: calc($thumbnail-width);
     height: calc($thumbnail-width/5.1);
+    .duration {
+      font-size: calc($thumbnail-width/25.82352);
+      font-weight: 450;
+      margin-bottom: calc($thumbnail-width/87.8);
+      max-height: calc($thumbnail-width/6.23579);
+    }
   }
 
   .youtube-thumbnail-details {
     display: flex;
-    padding: calc($thumbnail-width/33.76923) calc($thumbnail-width/39.90909) calc($thumbnail-width/36.58333) calc($thumbnail-width/24.38888);
+    padding: calc($thumbnail-width/33.76923) calc($thumbnail-width/39.90909) 
+    calc($thumbnail-width/36.58333) calc($thumbnail-width/32.38888);
     width: calc($thumbnail-width/1.07073);
     height: fit-content;
     .channel-logo img {
@@ -42,7 +48,7 @@ $thumbnail-width: var(--thumbnail-width);
       flex: 1;
       margin-left: calc($thumbnail-width/29.26666);
 
-      .video-title {
+     .video-title {
         font-family: "Roboto", "Arial", sans-serif;
         font-size: calc($thumbnail-width/25.82352);
         font-weight: 500;
@@ -80,7 +86,8 @@ $thumbnail-width: var(--thumbnail-width);
     }
     .menu-icon {
       margin-left: auto;
-      font-size: calc($thumbnail-width/27.4375);
+      font-size: calc($thumbnail-width/25.82352);
+      font-weight: 700;
     }
   }
 }
@@ -97,7 +104,7 @@ $thumbnail-width: var(--thumbnail-width);
       .video-info {
         color: #aaaaaa;
       }
-      .video-title,
+      .duration,.video-title,
       .menu-icon {
         color: #f1f1f1;
       }
@@ -110,7 +117,7 @@ $thumbnail-width: var(--thumbnail-width);
       .video-info {
         color: #606060;
       }
-      .video-title,
+      .duration,.video-title,
       .menu-icon {
         color: #0f0f0f;
       }
@@ -118,7 +125,7 @@ $thumbnail-width: var(--thumbnail-width);
 }
 
 .videoTitle{
-  width: $thumbnail-width;
+  width: calc($thumbnail-width/1.1);
   font-size: calc($thumbnail-width/25.82352);
   margin-bottom: 7px;
 }
@@ -173,7 +180,7 @@ $thumbnail-width: var(--thumbnail-width);
 }
 
 .input-fields-container{
-  width: fit-content;
+  width:calc($thumbnail-width);
   margin: 100px auto 50px auto;
 }
 
@@ -185,10 +192,10 @@ input{
 
 .buttonsDiv{
  margin: auto;
- width: fit-content;
  display: flex;
  justify-content: space-around;
- width: $thumbnail-width
+ width: calc($thumbnail-width/1);
+margin-bottom: 60px;
 }
 
 .download-icon{

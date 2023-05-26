@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { YoutubeThumbnailComponent } from './components/youtube-thumbnail/youtube-thumbnail.component';
 import { FormsModule } from '@angular/forms';
 import { ToggleThemeComponent } from './components/toggle-theme/toggle-theme.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     YoutubeThumbnailComponent,
-    ToggleThemeComponent
+    ToggleThemeComponent,
+    FooterComponent
   
   ],
   imports: [

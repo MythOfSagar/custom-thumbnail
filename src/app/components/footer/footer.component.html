@@ -1,0 +1,41 @@
+<footer id="footer" [ngClass]="{
+    'dark-mode-footer': isDarkTheme,
+    'light-mode-footer': !isDarkTheme
+  }">
+    <div>
+    </div>
+    <hr>
+    <p>Follow for More Websites like this</p>
+    <hr>
+    <div class="social-icons">
+        
+           
+                <a [href]="'https://www.twitter.com/'+userName" title="Twitter" target="_blank">
+                    <img src="https://img.icons8.com/color/48/twitter--v1.png"
+                        alt="twitter--v1" />
+                </a>
+            
+           
+                <a [href]="'https://www.linkedin.com/in/'+userName" title="Instagram" target="_blank">
+                    <img src="https://img.icons8.com/color/48/linkedin.png" alt="linkedin" />
+                </a>
+
+                <a [href]="'https://www.instagram.com/'+userName" title="Instagram" target="_blank">
+                    <img src="https://img.icons8.com/3d-fluency/94/instagram-new.png"
+                        alt="instagram-new" />
+                </a>
+            
+           
+                <a [href]="'https://www.github.com/'+userName" title="Github" target="_blank">
+                    <img src="https://img.icons8.com/fluency/48/github.png" alt="github" />
+                </a>
+            
+           
+                <a [href]="'https://www.youtube.com/@'+userName" title="Twitter" target="_blank">
+                    <img src="https://img.icons8.com/3d-fluency/94/youtube-play.png"
+                        alt="youtube-play" />
+                </a>
+            
+       
+    </div>
+</footer>

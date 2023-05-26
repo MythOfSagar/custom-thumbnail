@@ -1,3 +1,4 @@
+
 <div class="youtube-thumbnail-container"
 [ngClass]="{
   'youtube-thumbnail-container-dark-theme':isDarkTheme,
@@ -43,7 +44,7 @@
 }"
 >
 
-<input (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle"><br>
+<input  (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle"><br>
 <div style="display: flex;">
 <input (ngModelChange)="adjustHeight()" type="text" class="channelName" [(ngModel)]="channelName">
 <input (ngModelChange)="adjustHeight()" type="number" class="views" [(ngModel)]="views">
@@ -77,4 +78,7 @@ src="https://i.ibb.co/fHdZzcL/Screenshot-from-2023-05-25-22-37-21.png" alt="down
 <input class="image-input" type="file" #channelLogo (change)="onFileSelected($event,'logo')" accept="image/*">
 <input class="image-input" type="file" #topImage (change)="onFileSelected($event,'top')" accept="image/*">
 <input class="image-input" type="file" #bottomtopImage (change)="onFileSelected($event,'bottom')" accept="image/*">
+
+
+<custom-thumbnail-footer [isDarkTheme]="isDarkTheme"></custom-thumbnail-footer>
 

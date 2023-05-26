@@ -1,0 +1,53 @@
+$thumbnail-width: var(--thumbnail-width);
+$icon-size:calc( var(--thumbnail-width)/7);
+.social-icons {
+    min-height: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.social-icons a {
+    text-align: center;
+    margin: 0px 10px;
+    line-height: 50px;
+    display: inline-block;
+}
+
+.social-icons {
+    img,a {
+        width: $icon-size;
+        height: $icon-size;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .social-icons {
+        img,a {
+            width: 70px;
+            height: 70px;
+        }
+    }
+  }
+
+footer {
+    text-align: center;
+}
+
+.dark-mode-footer {
+    background-color: #0f0f0f;
+
+    p {
+        color: #f1f1f1;
+    }
+}
+
+.light-mode-footer {
+    background-color: #fff;
+
+    p {
+        color: #0f0f0f;
+    }
+}
