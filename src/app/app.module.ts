@@ -7,6 +7,7 @@ import { YoutubeThumbnailComponent } from './components/youtube-thumbnail/youtub
 import { FormsModule } from '@angular/forms';
 import { ToggleThemeComponent } from './components/toggle-theme/toggle-theme.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DownloadButtonComponent } from './components/download-button/download-button.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     YoutubeThumbnailComponent,
     ToggleThemeComponent,
-    FooterComponent
+    FooterComponent,
+    DownloadButtonComponent
   
   ],
   imports: [

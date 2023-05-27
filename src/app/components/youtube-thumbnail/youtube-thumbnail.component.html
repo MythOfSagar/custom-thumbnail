@@ -1,11 +1,11 @@
 
 <div class="youtube-thumbnail-container"
+
 [ngClass]="{
   'youtube-thumbnail-container-dark-theme':isDarkTheme,
   'youtube-thumbnail-container-light-theme':!isDarkTheme
 }">
-  <div class="top-image thumbnail-images top-img-div"
-  (dblclick)="topImage.click()">
+  <div class="top-image thumbnail-images top-img-div" (dblclick)="topImage.click()">
     <img  class="top-image thumbnail-images" [src]="selectedTopImage" alt="top image">
     <div class="duration">{{duration()}}</div>
   </div>
@@ -29,12 +29,10 @@
       <span class="menu-icon">&#8942;</span>
     </div>
   </div>
-  <div class="bottom-image thumbnail-images" (dblclick)="bottomtopImage.click()">
-    <img  class="bottom-image thumbnail-images" [src]="selectedBottomImage" alt="top image">
+  <div class="bottom-image thumbnail-images" style="background-color: red;"  (dblclick)="bottomtopImage.click()">
+    <img  class="bottom-image thumbnail-images" (dblclick)="bottomtopImage.click()" [src]="selectedBottomImage" alt="top image">
   </div>
 </div>
-
-
 
 
 <div class="input-fields-container"
@@ -67,11 +65,8 @@
 <div class="buttonsDiv">
 <custom-thumbnail-toggle-theme (emittTheme)="recieveTheme($event)"></custom-thumbnail-toggle-theme>
 
-<img title="Download thumbnail" class="download-icon" [ngClass]="{
-  'download-icon-dark-theme':isDarkTheme,
-  'download-icon-light-theme':!isDarkTheme
-}" (click)="downloadAsImage()" 
-src="https://i.ibb.co/fHdZzcL/Screenshot-from-2023-05-25-22-37-21.png" alt="download">
+<custom-thumbnail-download-button  (click)="downloadAsImage()"  [isDarkTheme]="isDarkTheme"></custom-thumbnail-download-button>
+
 
 </div>
 

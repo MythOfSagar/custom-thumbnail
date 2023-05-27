@@ -71,6 +71,7 @@ export class YoutubeThumbnailComponent implements OnInit {
     });
   }
 
+  
 
   duration(){
     const seconds=this.seconds || 0
@@ -114,6 +115,8 @@ export class YoutubeThumbnailComponent implements OnInit {
   adjustHeight(){
     const divElements = this.elementRef.nativeElement.querySelectorAll('.thumbnail-images');
 
+    console.log( this.initialImageHeight,this.videoDetailsDiv?.offsetHeight , this.initialDetailsHeight)
+
     if (this.videoDetailsDiv?.offsetHeight !== this.initialDetailsHeight) {
       divElements.forEach((divElement: HTMLElement) => {
         this.renderer.setStyle(
@@ -139,13 +142,22 @@ export class YoutubeThumbnailComponent implements OnInit {
   }
 
   readableViews(number: number): string {
+    const trillion = 1000000000000;
     const billion = 1000000000;
     const million = 1000000;
     const thousand = 1000;
 
     if(!number) number =0
 
-    if (number >= billion) {
+    if (number >= trillion) {
+      const views = (number / trillion).toFixed(1);
+      if(views.split('.')[1]=='0')
+      {
+        return views.slice(0,-2) + 'T' +' '+'views';
+      }
+      return views + 'T' +' '+'views';
+    }
+    else if (number >= billion) {
       const views = (number / billion).toFixed(1);
       if(views.split('.')[1]=='0')
       {

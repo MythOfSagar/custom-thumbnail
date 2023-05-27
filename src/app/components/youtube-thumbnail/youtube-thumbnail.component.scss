@@ -6,7 +6,7 @@ $thumbnail-width: var(--thumbnail-width);
 .youtube-thumbnail-container {
   width: fit-content;
   margin: auto;
-  height: calc($thumbnail-width/1.78455);
+  //height: calc($thumbnail-width/1.78455);
   .top-img-div{
     position: relative;
     .duration {
@@ -20,8 +20,7 @@ $thumbnail-width: var(--thumbnail-width);
       border-radius: calc($thumbnail-width/100);
     }
   }
-  .top-image,
-  .bottom-image {
+  .top-image {
     width: calc($thumbnail-width);
     height: calc($thumbnail-width/5.1);
     .duration {
@@ -98,6 +97,9 @@ $thumbnail-width: var(--thumbnail-width);
 
 
 .youtube-thumbnail-container-dark-theme{
+  .thumbnail-images{
+    background-color: #0f0f0f;
+  }
   background-color: #0f0f0f;
   .youtube-thumbnail-details {
       background-color: #0f0f0f;
@@ -111,6 +113,9 @@ $thumbnail-width: var(--thumbnail-width);
     }
 }
 .youtube-thumbnail-container-light-theme{
+  .thumbnail-images{
+    background-color: #fff;
+  }
   background-color: #fff;
   .youtube-thumbnail-details {
       background-color: #fff;
@@ -130,19 +135,19 @@ $thumbnail-width: var(--thumbnail-width);
   margin-bottom: 7px;
 }
 .channelName{
-  width: calc($thumbnail-width/2.75);
-    font-size: calc($thumbnail-width/31.35714);
+  width: calc($thumbnail-width/3.05);
+  font-size: calc($thumbnail-width/31.35714);
 }
 .views{
-  width: calc($thumbnail-width/5);
+  width: calc($thumbnail-width/4);
     font-size: calc($thumbnail-width/31.35714);
 }
 .time{
-  width: calc($thumbnail-width/5);
+  width: calc($thumbnail-width/7);
     font-size: calc($thumbnail-width/31.35714);
 }
 .period{
-  width: calc($thumbnail-width/5.8);
+  width: calc($thumbnail-width/5);
     font-size: calc($thumbnail-width/31.35714);
 }
 
@@ -175,7 +180,7 @@ $thumbnail-width: var(--thumbnail-width);
   }
 }
 .hours,.minutes,.seconds{
-  width: calc($thumbnail-width/3.1);
+  width: calc($thumbnail-width/3.3);
   font-size: calc($thumbnail-width/31.35714);
 }
 
@@ -198,17 +203,8 @@ input{
 margin-bottom: 60px;
 }
 
-.download-icon{
-  width: calc($thumbnail-width/9.75555);
-  height: calc($thumbnail-width/9.75555);
-  border-radius: 50%;
-  
-  cursor: pointer;
-}
-.download-icon-light-theme{
-  filter: invert(1);
-  box-shadow: 7px 7px 15px -10px #bbcfda, -4px -4px 13px #ffffff, inset 7px 7px 3px rgba(209, 217, 230, 0.35), inset -11px -11px 3px rgba(255, 255, 255, 0.3);
-}
-.download-icon-dark-theme{
-  box-shadow: 17px 17px 23px #1a1d20, -17px -17px 23px #282d32, inset 5px 5px 4px #1e2226, inset -5px -5px 4px #24282c;
+
+.bottom-image {
+  width: calc($thumbnail-width);
+  height: calc($thumbnail-width/5.1);
 }
