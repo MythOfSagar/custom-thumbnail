@@ -7,7 +7,16 @@ $icon-size:calc( var(--thumbnail-width)/7);
     align-items: center;
 }
 
-
+footer{
+    p{
+        font-family: "Roboto", "Arial", sans-serif;
+        font-size: calc($thumbnail-width/31.35714);
+        line-height: calc($thumbnail-width/24.38888);
+        font-weight: 400;
+        max-height: calc($thumbnail-width/6.85937);
+        white-space: normal;
+    }
+}
 
 .social-icons a {
     text-align: center;
@@ -51,3 +60,4 @@ footer {
         color: #0f0f0f;
     }
 }
+
