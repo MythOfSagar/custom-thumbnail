@@ -29,13 +29,18 @@
       <span class="menu-icon">&#8942;</span>
     </div>
   </div>
-  <div class="bottom-image thumbnail-images" style="background-color: red;"  (dblclick)="bottomtopImage.click()">
+  <div class="bottom-image thumbnail-images" (dblclick)="bottomtopImage.click()">
     <img  class="bottom-image thumbnail-images" [src]="selectedBottomImage" alt="top image">
   </div>
 </div>
 
 
-
+<div class="note" [ngClass]="{
+  'note-dark-theme':isDarkTheme,
+  'note-light-theme':!isDarkTheme
+}">
+  <p>Double-Tap on these kitties to replace them.</p>
+</div>
 
 
 <div class="crop-button"  *ngIf="showImageCropper">
@@ -62,7 +67,9 @@
   'input-fields-light-theme':!isDarkTheme
 }"
 >
-
+<div class="note" >
+  <p>Edit Details</p>
+</div>
 <input  (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle" #videoTitleInput><br>
 <div style="display: flex;">
 <input (ngModelChange)="adjustHeight()" type="text" class="channelName" [(ngModel)]="channelName" #channelNameInput>
@@ -84,7 +91,14 @@
 </div>
 
 <div class="buttonsDiv">
-<custom-thumbnail-toggle-theme (emittTheme)="recieveTheme($event)"></custom-thumbnail-toggle-theme>
+
+
+<custom-thumbnail-button  
+(click)="toggleTheme()"  
+[buttonLogo]="!isDarkTheme
+? 'https://i.ibb.co/kgJL0rJ/images-q-tbn-ANd9-Gc-Tto6i1-LPYks-QTJ0-Lxyrnk9-AIj-DDAvh-Slajpf-Xfp-SQqc-DCJa-IPhh-OKDY-C01ot39-B96t.png'
+: 'https://www.uplooder.net/img/image/2/addf703a24a12d030968858e0879b11e/moon.svg'"
+[isDarkTheme]="isDarkTheme"></custom-thumbnail-button>
 
 
 <custom-thumbnail-button  

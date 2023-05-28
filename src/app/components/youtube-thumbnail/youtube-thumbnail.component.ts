@@ -10,21 +10,21 @@ import { saveAs } from 'file-saver';
 })
 
 export class YoutubeThumbnailComponent implements OnInit {
-  channelName: string=`yFX Studios`;
-  videoTitle: string='WAR Vfx breakdown by yFX';
-  views: number=362000;
+  channelName: string=`Myaaaon`;
+  videoTitle: string='Kittens Meowing Compilation';
+  views: number=55500000000;
   time:number=7
   videoDetailsDiv:any
   initialDetailsHeight:number=0
   initialImageHeight:number=0
   isDarkTheme:boolean=true
   period:string='days'
-  selectedTopImage: string='https://mcdn.wallpapersafari.com/medium/80/68/YravwC.jpg';
-  selectedBottomImage: string ='https://www.dontwasteyourmoney.com/wp-content/uploads/2020/07/best-extra-wide-pet-gate-900x400.jpeg';
-  selectedChannelLogo: string ='https://yt3.googleusercontent.com/BygFhJOv7N5bikizmourxBK9KatTTEDmmtCAg-DmnikXB0fv77J_hxyPCgiRGAiTprjNKIBwNw=s176-c-k-c0x00ffffff-no-rj';
+  selectedTopImage: string='https://i.ibb.co/hypB4dk/11.jpg';
+  selectedBottomImage: string ='https://i.ibb.co/DQzc0Mr/22.jpg';
+  selectedChannelLogo: string ='https://i.ibb.co/NsRgnkW/f77ba37fa6aba7349083cab44ce9dcaf.jpg';
   hours:number=0
-  minutes:number=3
-  seconds:number=34
+  minutes:number=22
+  seconds:number=6
   showImageCropper=false
   imageChangedEvent: any = '';   
   croppedImage: any = '';
@@ -48,15 +48,16 @@ export class YoutubeThumbnailComponent implements OnInit {
     this.initialImageHeight=this.elementRef.nativeElement.querySelector('.thumbnail-images').offsetHeight
   }
 
-  recieveTheme(theme:boolean){
-    this.isDarkTheme=theme
+ 
+
+  toggleTheme(){
+    this.isDarkTheme=!this.isDarkTheme
     this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#0f0f0f');
     !this.isDarkTheme && this.renderer.setStyle(document.body, 'background-color', '#fff');
   }
 
 
   onFileSelected(event: any,type:string) {
-
     if(type==='top'){
       this.aspectRatio=5.1
     }else if(type==='bottom'){
@@ -64,9 +65,8 @@ export class YoutubeThumbnailComponent implements OnInit {
     }else if(type==='logo'){
       this.aspectRatio=1
     }
-    this.currentImageSelection=type
-
     this.showImageCropper=true
+    this.currentImageSelection=type
     this.imageChangedEvent = event;
     const file: File = event.target.files[0] as File;
     const reader = new FileReader();
@@ -107,7 +107,6 @@ export class YoutubeThumbnailComponent implements OnInit {
   }
 
   cropImage(): void {
-   
     if(this.currentImageSelection==='top'){
       this.selectedTopImage=this.croppedImage.base64
     }else if(this.currentImageSelection==='bottom'){

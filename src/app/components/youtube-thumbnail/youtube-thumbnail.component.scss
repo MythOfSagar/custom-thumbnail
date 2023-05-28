@@ -156,7 +156,7 @@ $thumbnail-width: var(--thumbnail-width);
   box-shadow: 0px -25px 20px -20px rgba(246,255,252,0.45),
 0px 25px 20px -20px rgba(246,255,252,0.45);
     .period,
-    input{
+    input,p{
       background-color: #0f0f0f;
       color: #aaaaaa;
     }
@@ -170,7 +170,7 @@ $thumbnail-width: var(--thumbnail-width);
   box-shadow: 0px -25px 20px -20px rgba(0,0,0,0.45),
   0px 25px 20px -20px rgba(0,0,0,0.45);
   .period,
-  input{
+  input,p{
     background-color: #fff;
     color: #606060;;
   }
@@ -209,7 +209,7 @@ margin-bottom: 60px;
   height: calc($thumbnail-width/5.1);
 }
 
-image-cropper{
+image-cropper,.note{
   width: 95%;
   margin: auto;
 }
@@ -219,4 +219,23 @@ image-cropper{
   width: calc($thumbnail-width/1.1);
   display: flex;
   justify-content: flex-end;
+}
+
+.note{
+  text-align: center;
+  p{
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: calc($thumbnail-width/33.35714);
+    line-height: calc($thumbnail-width/24.38888);
+    font-weight: 400;
+    max-height: calc($thumbnail-width/6.85937);
+    white-space: normal;
+  }
+}
+
+.note-dark-theme{
+  color: #aaaaaa;
+}
+.note-light-theme{
+  color: #606060;
 }
