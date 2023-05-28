@@ -7,19 +7,19 @@
 }">
   <div class="top-image thumbnail-images top-img-div" (dblclick)="topImage.click()">
     <img  class="top-image thumbnail-images" [src]="selectedTopImage" alt="top image">
-    <div class="duration">{{duration()}}</div>
+    <div class="duration" (click)="durationInput.focus()">{{duration()}}</div>
   </div>
   <div class="youtube-thumbnail-details">
     <div (dblclick)="channelLogo.click()" class="channel-logo">
       <img [src]="selectedChannelLogo" alt="ChannelLogo">
     </div>
     <div class="video-details">
-      <div class="video-title">{{ videoTitle.trim() }}</div>
+      <div class="video-title" (click)="videoTitleInput.focus()">{{ videoTitle.trim() }}</div>
       <div class="video-info">
         <div class="channel-name">
-          <span>{{ shortenChannelName(channelName) }}</span>
-          <span class="views">{{ readableViews(views) }}</span>
-          <span class="time-since">
+          <span (click)="channelNameInput.focus()">{{ shortenChannelName(channelName) }}</span>
+          <span class="views" (click)="vieswInput.focus()">{{ readableViews(views) }}</span>
+          <span class="time-since" (click)="timeInput.focus()">
             {{ (time && time.toString() || 0) + " " + (time === 1 ? period.slice(0, -1) : period) + " ago" }}
           </span>
         </div>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="bottom-image thumbnail-images" style="background-color: red;"  (dblclick)="bottomtopImage.click()">
-    <img  class="bottom-image thumbnail-images" (dblclick)="bottomtopImage.click()" [src]="selectedBottomImage" alt="top image">
+    <img  class="bottom-image thumbnail-images" [src]="selectedBottomImage" alt="top image">
   </div>
 </div>
 
@@ -42,12 +42,12 @@
 }"
 >
 
-<input  (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle"><br>
+<input  (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle" #videoTitleInput><br>
 <div style="display: flex;">
-<input (ngModelChange)="adjustHeight()" type="text" class="channelName" [(ngModel)]="channelName">
-<input (ngModelChange)="adjustHeight()" type="number" class="views" [(ngModel)]="views">
+<input (ngModelChange)="adjustHeight()" type="text" class="channelName" [(ngModel)]="channelName" #channelNameInput>
+<input (ngModelChange)="adjustHeight()" type="number" class="views" [(ngModel)]="views" #vieswInput>
 
-  <input (ngModelChange)="adjustHeight()" type="number" class="time" [(ngModel)]="time">
+  <input (ngModelChange)="adjustHeight()" type="number" class="time" [(ngModel)]="time" #timeInput>
   <select (ngModelChange)="adjustHeight()" class="period" [(ngModel)]="period">
     <option value="seconds">seconds ago</option>
     <option value="minutes">minutes ago</option>
@@ -58,7 +58,7 @@
 </div>
 <br>
 <input type="number" class="hours" [(ngModel)]="hours">
-<input type="number" max="59" min="0" class="minutes" [(ngModel)]="minutes">
+<input type="number" max="59" min="0" class="minutes" [(ngModel)]="minutes" #durationInput>
 <input type="number" max="59" min="0" class="seconds" [(ngModel)]="seconds">
 </div>
 
