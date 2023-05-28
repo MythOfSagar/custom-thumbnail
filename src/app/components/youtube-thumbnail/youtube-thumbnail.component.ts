@@ -233,7 +233,5 @@ export class YoutubeThumbnailComponent implements OnInit {
   loadImageFailed(): void {
     // Error handling for image load failure
   }
-
- 
 }
 

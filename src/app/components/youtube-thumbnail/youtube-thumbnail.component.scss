@@ -69,7 +69,7 @@ $thumbnail-width: var(--thumbnail-width);
         max-height: calc($thumbnail-width/6.85937);
         white-space: normal;
 
-        .channel-name {
+        .channel-name-views-period {
           overflow: hidden;
           max-height: calc($thumbnail-width/6.23579);
           text-overflow: ellipsis;
@@ -238,4 +238,11 @@ image-cropper,.note{
 }
 .note-light-theme{
   color: #606060;
+}
+
+.crop-button-dark-theme{
+  custom-thumbnail-button{border:7px solid #fff;}
+}
+.crop-button-light-theme{
+  custom-thumbnail-button{border:7px solid #0f0f0f;}
 }

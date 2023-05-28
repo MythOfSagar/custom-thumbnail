@@ -16,7 +16,7 @@
     <div class="video-details">
       <div class="video-title" (click)="videoTitleInput.focus()">{{ videoTitle.trim() }}</div>
       <div class="video-info">
-        <div class="channel-name">
+        <div class="channel-name-views-period">
           <span (click)="channelNameInput.focus()">{{ shortenChannelName(channelName) }}</span>
           <span class="views" (click)="vieswInput.focus()">{{ readableViews(views) }}</span>
           <span class="time-since" (click)="timeInput.focus()">
@@ -43,8 +43,11 @@
 </div>
 
 
-<div class="crop-button"  *ngIf="showImageCropper">
-  <custom-thumbnail-button  
+<div class="crop-button"  *ngIf="showImageCropper"  [ngClass]="{
+  'crop-button-dark-theme':isDarkTheme,
+  'crop-button-light-theme':!isDarkTheme
+}">
+  <custom-thumbnail-button style="border-radius: 50%;" 
 (click)="cropImage()"  
 [buttonLogo]="'https://i.ibb.co/drRMrXF/images-1-1.png'"
 [isDarkTheme]="isDarkTheme"></custom-thumbnail-button>
@@ -70,13 +73,13 @@
 <div class="note" >
   <p>Edit Details</p>
 </div>
-<input  (ngModelChange)="adjustHeight()" type="text" class="videoTitle" [(ngModel)]="videoTitle" #videoTitleInput><br>
+<input  (ngModelChange)="adjustHeight()" type="text" name="videoTitle" class="videoTitle" [(ngModel)]="videoTitle" #videoTitleInput><br>
 <div style="display: flex;">
-<input (ngModelChange)="adjustHeight()" type="text" class="channelName" [(ngModel)]="channelName" #channelNameInput>
-<input (ngModelChange)="adjustHeight()" type="number" class="views" [(ngModel)]="views" #vieswInput>
+<input (ngModelChange)="adjustHeight()" type="text" name="channelName" class="channelName" [(ngModel)]="channelName" #channelNameInput>
+<input (ngModelChange)="adjustHeight()" type="number" name="views" class="views" [(ngModel)]="views" #vieswInput>
 
-  <input (ngModelChange)="adjustHeight()" type="number" class="time" [(ngModel)]="time" #timeInput>
-  <select (ngModelChange)="adjustHeight()" class="period" [(ngModel)]="period">
+  <input (ngModelChange)="adjustHeight()" type="number" name="time" class="time" [(ngModel)]="time" #timeInput>
+  <select (ngModelChange)="adjustHeight()" name="period" class="period" [(ngModel)]="period">
     <option value="seconds">seconds ago</option>
     <option value="minutes">minutes ago</option>
     <option value="hours">hours ago</option>
@@ -85,9 +88,9 @@
   </select>
 </div>
 <br>
-<input type="number" class="hours" [(ngModel)]="hours">
-<input type="number" max="59" min="0" class="minutes" [(ngModel)]="minutes" #durationInput>
-<input type="number" max="59" min="0" class="seconds" [(ngModel)]="seconds">
+<input name="hours" type="number" class="hours" [(ngModel)]="hours">
+<input name="minutes" type="number" max="59" min="0" class="minutes" [(ngModel)]="minutes" #durationInput>
+<input name="seconds" type="number" max="59" min="0" class="seconds" [(ngModel)]="seconds">
 </div>
 
 <div class="buttonsDiv">
