@@ -6,12 +6,12 @@
   'youtube-thumbnail-container-light-theme':!isDarkTheme
 }">
   <div class="top-image thumbnail-images top-img-div" (dblclick)="topImage.click()">
-    <img  class="top-image thumbnail-images" [src]="selectedTopImage" alt="top image">
+    <img  class="top-image thumbnail-images" [src]="selectedTopImage || 'https://i.ibb.co/hypB4dk/11.jpg'" alt="top image">
     <div class="duration" (click)="durationInput.focus()">{{duration()}}</div>
   </div>
   <div class="youtube-thumbnail-details">
     <div (dblclick)="channelLogo.click()" class="channel-logo">
-      <img [src]="selectedChannelLogo" alt="ChannelLogo">
+      <img [src]="selectedChannelLogo || 'https://i.ibb.co/NsRgnkW/f77ba37fa6aba7349083cab44ce9dcaf.jpg'" alt="ChannelLogo">
     </div>
     <div class="video-details">
       <div class="video-title" (click)="videoTitleInput.focus()">{{ videoTitle.trim() }}</div>
@@ -30,12 +30,12 @@
     </div>
   </div>
   <div class="bottom-image thumbnail-images" (dblclick)="bottomtopImage.click()">
-    <img  class="bottom-image thumbnail-images" [src]="selectedBottomImage" alt="top image">
+    <img  class="bottom-image thumbnail-images" [src]="selectedBottomImage || 'https://i.ibb.co/DQzc0Mr/22.jpg'" alt="top image">
   </div>
 </div>
 
 
-<div class="note" [ngClass]="{
+<div *ngIf="!selectedBottomImage || !selectedTopImage || !selectedChannelLogo" class="note" [ngClass]="{
   'note-dark-theme':isDarkTheme,
   'note-light-theme':!isDarkTheme
 }">

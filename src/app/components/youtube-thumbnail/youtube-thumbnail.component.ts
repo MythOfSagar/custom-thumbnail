@@ -19,9 +19,9 @@ export class YoutubeThumbnailComponent implements OnInit {
   initialImageHeight:number=0
   isDarkTheme:boolean=true
   period:string='days'
-  selectedTopImage: string='https://i.ibb.co/hypB4dk/11.jpg';
-  selectedBottomImage: string ='https://i.ibb.co/DQzc0Mr/22.jpg';
-  selectedChannelLogo: string ='https://i.ibb.co/NsRgnkW/f77ba37fa6aba7349083cab44ce9dcaf.jpg';
+  selectedChannelLogo: string ='';
+  selectedTopImage: string='';
+  selectedBottomImage: string ='';
   hours:number=0
   minutes:number=22
   seconds:number=6
