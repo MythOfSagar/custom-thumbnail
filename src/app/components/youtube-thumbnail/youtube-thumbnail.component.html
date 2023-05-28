@@ -35,6 +35,27 @@
 </div>
 
 
+
+
+
+<div class="crop-button"  *ngIf="showImageCropper">
+  <custom-thumbnail-button  
+(click)="cropImage()"  
+[buttonLogo]="'https://i.ibb.co/drRMrXF/images-1-1.png'"
+[isDarkTheme]="isDarkTheme"></custom-thumbnail-button>
+</div>
+<image-cropper *ngIf="showImageCropper"
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="aspectRatio"
+  [roundCropper]="false"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+
 <div class="input-fields-container"
 [ngClass]="{
   'input-fields-dark-theme':isDarkTheme,
@@ -65,7 +86,11 @@
 <div class="buttonsDiv">
 <custom-thumbnail-toggle-theme (emittTheme)="recieveTheme($event)"></custom-thumbnail-toggle-theme>
 
-<custom-thumbnail-download-button  (click)="downloadAsImage()"  [isDarkTheme]="isDarkTheme"></custom-thumbnail-download-button>
+
+<custom-thumbnail-button  
+(click)="downloadAsImage()"  
+[buttonLogo]="'https://i.ibb.co/fHdZzcL/Screenshot-from-2023-05-25-22-37-21.png'"
+[isDarkTheme]="isDarkTheme"></custom-thumbnail-button>
 
 
 </div>
@@ -76,4 +101,6 @@
 
 
 <custom-thumbnail-footer [isDarkTheme]="isDarkTheme"></custom-thumbnail-footer>
+
+
 

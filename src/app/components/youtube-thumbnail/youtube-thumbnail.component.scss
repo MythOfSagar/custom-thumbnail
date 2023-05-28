@@ -205,6 +205,18 @@ margin-bottom: 60px;
 
 
 .bottom-image {
-  width: calc($thumbnail-width);
+  width: $thumbnail-width;
   height: calc($thumbnail-width/5.1);
+}
+
+image-cropper{
+  width: 95%;
+  margin: auto;
+}
+
+.crop-button{
+  margin: auto;
+  width: calc($thumbnail-width/1.1);
+  display: flex;
+  justify-content: flex-end;
 }

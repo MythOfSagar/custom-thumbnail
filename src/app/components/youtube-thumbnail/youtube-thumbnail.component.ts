@@ -25,7 +25,12 @@ export class YoutubeThumbnailComponent implements OnInit {
   hours:number=0
   minutes:number=3
   seconds:number=34
-  
+  showImageCropper=false
+  imageChangedEvent: any = '';   
+  croppedImage: any = '';
+  aspectRatio:number=0
+  currentImageSelection:string=''
+
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
@@ -51,8 +56,21 @@ export class YoutubeThumbnailComponent implements OnInit {
 
 
   onFileSelected(event: any,type:string) {
+
+    if(type==='top'){
+      this.aspectRatio=5.1
+    }else if(type==='bottom'){
+      this.aspectRatio=5.1
+    }else if(type==='logo'){
+      this.aspectRatio=1
+    }
+    this.currentImageSelection=type
+
+    this.showImageCropper=true
+    this.imageChangedEvent = event;
     const file: File = event.target.files[0] as File;
-    this.readImage(file,type);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
   }
 
   setThumbnailWidth(value:string,variable:string) {
@@ -88,16 +106,27 @@ export class YoutubeThumbnailComponent implements OnInit {
     return `${minutes}:${seconds}`
   }
 
+  cropImage(): void {
+   
+    if(this.currentImageSelection==='top'){
+      this.selectedTopImage=this.croppedImage.base64
+    }else if(this.currentImageSelection==='bottom'){
+      this.selectedBottomImage=this.croppedImage.base64
+    }else if(this.currentImageSelection==='logo'){
+      this.selectedChannelLogo=this.croppedImage.base64
+    }
+    this.showImageCropper=false
+  }
   
   readImage(file: File,type:string) {
     const reader = new FileReader();
     reader.onload = (event: any) => {
       if(type==='top'){
-        this.selectedTopImage = event.target.result;
+      
       }else if(type==='bottom'){
-        this.selectedBottomImage = event.target.result;
+
       }else if(type==='logo'){
-        this.selectedChannelLogo = event.target.result;
+  
       }
     };
     reader.readAsDataURL(file);
@@ -114,9 +143,7 @@ export class YoutubeThumbnailComponent implements OnInit {
 
   adjustHeight(){
     const divElements = this.elementRef.nativeElement.querySelectorAll('.thumbnail-images');
-
     console.log( this.initialImageHeight,this.videoDetailsDiv?.offsetHeight , this.initialDetailsHeight)
-
     if (this.videoDetailsDiv?.offsetHeight !== this.initialDetailsHeight) {
       divElements.forEach((divElement: HTMLElement) => {
         this.renderer.setStyle(
@@ -186,5 +213,28 @@ export class YoutubeThumbnailComponent implements OnInit {
       return number.toString()+' '+'views';
     }
   }
+
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(image:any): void {
+    this.croppedImage = image;
+  }
+
+  imageLoaded(): void {
+    // Image loaded callback
+  }
+
+  cropperReady(): void {
+    // Cropper ready callback
+  }
+
+  loadImageFailed(): void {
+    // Error handling for image load failure
+  }
+
+ 
 }
 

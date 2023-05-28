@@ -7,7 +7,9 @@ import { YoutubeThumbnailComponent } from './components/youtube-thumbnail/youtub
 import { FormsModule } from '@angular/forms';
 import { ToggleThemeComponent } from './components/toggle-theme/toggle-theme.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { DownloadButtonComponent } from './components/download-button/download-button.component';
+
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
@@ -16,13 +18,13 @@ import { DownloadButtonComponent } from './components/download-button/download-b
     YoutubeThumbnailComponent,
     ToggleThemeComponent,
     FooterComponent,
-    DownloadButtonComponent
-  
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
