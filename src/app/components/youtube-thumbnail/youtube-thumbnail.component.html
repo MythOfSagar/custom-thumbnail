@@ -1,6 +1,6 @@
 
 <div class="youtube-thumbnail-container"
-
+*ngIf="!showImageCropper"
 [ngClass]="{
   'youtube-thumbnail-container-dark-theme':isDarkTheme,
   'youtube-thumbnail-container-light-theme':!isDarkTheme
@@ -35,7 +35,7 @@
 </div>
 
 
-<div *ngIf="!selectedBottomImage || !selectedTopImage || !selectedChannelLogo" class="note" [ngClass]="{
+<div *ngIf="(!selectedBottomImage || !selectedTopImage || !selectedChannelLogo) && (!showImageCropper)" class="note" [ngClass]="{
   'note-dark-theme':isDarkTheme,
   'note-light-theme':!isDarkTheme
 }">
@@ -94,7 +94,7 @@ title="Click to Set Cropped Image"
 <input name="seconds" type="number" max="59" min="0" class="seconds" [(ngModel)]="seconds">
 </div>
 
-<div class="buttonsDiv">
+<div class="buttonsDiv" *ngIf="!showImageCropper">
 
 
 <custom-thumbnail-button
@@ -124,6 +124,3 @@ title="Click to Set Cropped Image"
 
 
 <custom-thumbnail-footer [isDarkTheme]="isDarkTheme"></custom-thumbnail-footer>
-
-
-
