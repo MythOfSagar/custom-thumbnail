@@ -84,7 +84,7 @@ export class YoutubeThumbnailComponent implements OnInit {
     const div:any= document.querySelector('.youtube-thumbnail-container');
     html2canvas.default(div).then((canvas) => {
       canvas.toBlob((blob:any) => {
-        saveAs(blob, 'MythOfSagar.png');
+        saveAs(blob, 'Custom_Thumbnail.png');
       });
     });
   }
