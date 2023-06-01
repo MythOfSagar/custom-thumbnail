@@ -7,6 +7,9 @@ $thumbnail-width: var(--thumbnail-width);
   width: fit-content;
   margin: auto;
   //height: calc($thumbnail-width/1.78455);
+  .thumbnail-images{
+    cursor: pointer;
+  }
   .top-img-div{
     position: relative;
     .duration {
@@ -41,6 +44,7 @@ $thumbnail-width: var(--thumbnail-width);
       width: calc($thumbnail-width/9.75555);
       height: calc($thumbnail-width/9.75555);
       border-radius: 50%;
+      cursor: pointer;
     }
 
     .video-details {
