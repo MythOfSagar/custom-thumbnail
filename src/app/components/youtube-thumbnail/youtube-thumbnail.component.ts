@@ -23,8 +23,8 @@ export class YoutubeThumbnailComponent implements OnInit {
   selectedTopImage: string='';
   selectedBottomImage: string ='';
   hours:number=0
-  minutes:number=9
-  seconds:number=15
+  minutes:number=22
+  seconds:number=6
   showImageCropper=false
   imageChangedEvent: any = '';   
   croppedImage: any = '';
