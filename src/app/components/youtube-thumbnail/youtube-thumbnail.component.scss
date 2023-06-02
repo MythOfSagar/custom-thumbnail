@@ -6,7 +6,7 @@ $thumbnail-width: var(--thumbnail-width);
 .youtube-thumbnail-container {
   width: fit-content;
   margin: auto;
-  height: calc($thumbnail-width/1.78455);
+ // height: calc($thumbnail-width/1.78455);
   .thumbnail-images{
     cursor: pointer;
   }
