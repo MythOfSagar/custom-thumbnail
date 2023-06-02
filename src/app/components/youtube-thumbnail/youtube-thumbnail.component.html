@@ -1,6 +1,27 @@
+<div class="crop-button"  *ngIf="showImageCropper"  [ngClass]="{
+  'crop-button-dark-theme':isDarkTheme,
+  'crop-button-light-theme':!isDarkTheme
+}">
+  <custom-thumbnail-button style="border-radius: 50%;" 
+(click)="cropImage()"  
+title="Click to Set Cropped Image"
+[buttonLogo]="'https://i.ibb.co/drRMrXF/images-1-1.png'"
+[isDarkTheme]="isDarkTheme"></custom-thumbnail-button>
+</div>
+<image-cropper *ngIf="showImageCropper"
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="aspectRatio"
+  [roundCropper]="false"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded()"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+
+
 
 <div class="youtube-thumbnail-container"
-*ngIf="!showImageCropper"
 [ngClass]="{
   'youtube-thumbnail-container-dark-theme':isDarkTheme,
   'youtube-thumbnail-container-light-theme':!isDarkTheme
@@ -43,26 +64,7 @@
 </div>
 
 
-<div class="crop-button"  *ngIf="showImageCropper"  [ngClass]="{
-  'crop-button-dark-theme':isDarkTheme,
-  'crop-button-light-theme':!isDarkTheme
-}">
-  <custom-thumbnail-button style="border-radius: 50%;" 
-(click)="cropImage()"  
-title="Click to Set Cropped Image"
-[buttonLogo]="'https://i.ibb.co/drRMrXF/images-1-1.png'"
-[isDarkTheme]="isDarkTheme"></custom-thumbnail-button>
-</div>
-<image-cropper *ngIf="showImageCropper"
-  [imageChangedEvent]="imageChangedEvent"
-  [maintainAspectRatio]="true"
-  [aspectRatio]="aspectRatio"
-  [roundCropper]="false"
-  (imageCropped)="imageCropped($event)"
-  (imageLoaded)="imageLoaded()"
-  (cropperReady)="cropperReady()"
-  (loadImageFailed)="loadImageFailed()"
-></image-cropper>
+
 
 
 <div class="input-fields-container"
@@ -85,6 +87,8 @@ title="Click to Set Cropped Image"
     <option value="minutes">minutes ago</option>
     <option value="hours">hours ago</option>
     <option value="days">days ago</option>
+    <option value="weeks">weeks ago</option>
+    <option value="months">months ago</option>
     <option value="years">years ago</option>
   </select>
 </div>
