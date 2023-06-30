@@ -11,7 +11,7 @@
   <custom-thumbnail-root></custom-thumbnail-root>
 </body>
 <script>
-    navigator?.serviceWorker?.register("src/serviceworker/pwabuilder-adv-sw.js",{scope:'/'})
+    navigator?.serviceWorker?.register("src/pwabuilder-adv-sw.js",{scope:'/'})
     .then(registration => {
       console.log('ServiceWorker registration success:',registration);
     })
